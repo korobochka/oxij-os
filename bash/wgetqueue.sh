@@ -13,11 +13,7 @@ for a in "$@"
 do
     r=`mktemp --tmpdir="$QPATH/newrequests"`
     echo "$a" > "$r"
-done
-
-for a in "$QPATH/newrequests"/*
-do
-    mv "$a" "$QPATH/requests"
+    mv "$r" "$QPATH/requests/"
 done
 
 if mkdir ${LOCK}; then
@@ -45,6 +41,6 @@ exec < /dev/null
             wget -c "$url"
         done
 
-        sleep 5
+        sleep 2
     done
 ) &
